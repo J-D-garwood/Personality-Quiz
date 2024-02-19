@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const ResultsSchema = new Schema({
+const resultSchema = new Schema({
     narcissismLvl: {
         type: Number,
         required: true,
@@ -11,10 +11,19 @@ const ResultsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true,
-    }
-    description: {
+    },
+    classification: {
         type: String,
+        trim: true,
         required: true
-    }
+    },
+    timestamp: {
+        type: Date,
+        default: Date.now,
+    },
     //continue from here
-})
+});
+
+const Result = mongoose.model("Result", resultSchema);
+
+moodule.exports = Result;

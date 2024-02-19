@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-const Order = require("./Order");
 const Results = require("./Result");
 
 const userSchema = new Schema({
@@ -16,8 +15,10 @@ const userSchema = new Schema({
         required: true,
         minlength: 8,
     },
-    results: {
-        type: String
+    result: {
+        type: Schema.Types.ObjectId,
+        ref: "Result",
+        required: false,
     },
 });
 
